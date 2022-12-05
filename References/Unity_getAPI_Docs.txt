@@ -1,0 +1,3 @@
+https://docs.unity3d.com/ScriptReference/Networking.UnityWebRequest.Get.html
+
+유니티에서 php api를 가져오는 것에 대한 문서
