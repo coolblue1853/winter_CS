@@ -19,6 +19,11 @@ public class web : MonoBehaviour
 
     }
 
+    public void showuseritems()
+    {
+        StartCoroutine(getItemsIDs(main.Instance.UserInfo.UserID));
+    }
+
     public IEnumerator getText()
     {
         using (UnityWebRequest www = UnityWebRequest.Get("http://localhost/winterDev_Backend/getData.php"))
@@ -75,6 +80,8 @@ public class web : MonoBehaviour
             else
             {
                 Debug.Log(www.downloadHandler.text);
+                main.Instance.UserInfo.SetInfo(username, password);
+                //main.Instance.UserInfo.SetID(www.downloadHandler.text);
             }
         }
     }
@@ -98,6 +105,29 @@ public class web : MonoBehaviour
             {
                 Debug.Log(www.downloadHandler.text);
             }
+        }
+    }
+
+    public IEnumerator getItemsIDs(string userID)
+    {
+        WWWForm form = new WWWForm();
+        form.AddField("userID", userID);
+
+
+        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/winterDev_Backend/getUser.php", form))
+        {
+            yield return www.Send();
+
+            if (www.isNetworkError || www.isHttpError)
+            {
+                Debug.Log(www.error);
+            }
+            else
+            {
+                Debug.Log(www.downloadHandler.text);
+                string jsonArray = www.downloadHandler.text;
+            }
+
         }
     }
 }
