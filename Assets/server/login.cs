@@ -9,7 +9,9 @@ public class login : MonoBehaviour
     public InputField userPassInput;
     public Button loginBotton;
 
-    public GameObject registerUi;
+    public GameObject LoginUI;
+    public GameObject registerUI;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -23,6 +25,14 @@ public class login : MonoBehaviour
 
     public void OepnRegisterUi()
     {
-        registerUi.SetActive(true);
+        registerUI.SetActive(true);
     }
+    public void OepnLoginUi()
+    {
+        LoginUI.SetActive(true);
+        registerUI.SetActive(false);
+
+    }
+
+
 }

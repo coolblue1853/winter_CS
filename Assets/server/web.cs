@@ -80,8 +80,18 @@ public class web : MonoBehaviour
             else
             {
                 Debug.Log(www.downloadHandler.text);
-                main.Instance.UserInfo.SetInfo(username, password);
-                //main.Instance.UserInfo.SetID(www.downloadHandler.text);
+                if (www.downloadHandler.text != "Username does not exsist.")
+                {
+                    if (www.downloadHandler.text != "Wrong Password!")
+                    {
+                        main.Instance.UserInfo.SetInfo(username, password);
+                        main.Instance.UserInfo.SetID(www.downloadHandler.text);
+                    }
+
+                }
+
+
+
             }
         }
     }
