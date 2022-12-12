@@ -17,7 +17,6 @@ public class login : MonoBehaviour
     {
         loginBotton.onClick.AddListener(() => 
         {
-
             StartCoroutine( main.Instance.web.Login(userNameInput.text, userPassInput.text));
         });
     }
@@ -25,6 +24,7 @@ public class login : MonoBehaviour
 
     public void OepnRegisterUi()
     {
+        main.Instance.UserInfo.resetWrongUI();
         registerUI.SetActive(true);
     }
     public void OepnLoginUi()

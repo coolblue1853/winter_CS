@@ -84,12 +84,21 @@ public class web : MonoBehaviour
                 {
                     if (www.downloadHandler.text != "Wrong Password!")
                     {
+                        main.Instance.UserInfo.resetWrongUI();
                         main.Instance.UserInfo.SetInfo(username, password);
                         main.Instance.UserInfo.SetID(www.downloadHandler.text);
+
+                    }
+                    else
+                    {
+                        main.Instance.UserInfo.WrongPassward();
                     }
 
                 }
-
+                else
+                {
+                    main.Instance.UserInfo.WrongUsername();
+                }
 
 
             }

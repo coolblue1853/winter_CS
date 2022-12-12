@@ -26,7 +26,10 @@ public class sceneManager : MonoBehaviour
     {
         loginSuccesUI.SetActive(true);
         yield return new WaitForSecondsRealtime(2f);
-        SceneManager.LoadScene("MainScene");
+
+        main.Instance.UserProfile.SetActive(true);
+        main.Instance.login.gameObject.SetActive(false);
+        //SceneManager.LoadScene("MainScene");
 
     }
 

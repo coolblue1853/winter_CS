@@ -8,6 +8,9 @@ public class userInfo : MonoBehaviour
     string Level;
     string Coins;
 
+    public GameObject wrongUser;
+    public GameObject wrongPass;
+
     public void SetInfo(string username, string userpassword)
     {
         UserName = username;
@@ -18,6 +21,20 @@ public class userInfo : MonoBehaviour
     {
         UserID = id;
     }
-
+    public void WrongUsername()
+    {
+        wrongUser.SetActive(true);
+        wrongPass.SetActive(false);
+    }
+    public void WrongPassward()
+    {
+        wrongUser.SetActive(false);
+        wrongPass.SetActive(true);
+    }
+    public void resetWrongUI()
+    {
+        wrongUser.SetActive(false);
+        wrongPass.SetActive(false);
+    }
 
 }

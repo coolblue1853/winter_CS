@@ -8,6 +8,11 @@ public class main : MonoBehaviour
 
     public web web;
     public userInfo UserInfo;
+    public login login;
+
+    public GameObject UserProfile;
+
+
     void Start()
     {
         Instance = this;
