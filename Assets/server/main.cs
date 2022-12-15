@@ -11,6 +11,7 @@ public class main : MonoBehaviour
     public login login;
 
     public GameObject UserProfile;
+    public GameObject LoginUI;
 
 
     void Start()
@@ -21,8 +22,4 @@ public class main : MonoBehaviour
     }
 
 
-    public void Update()
-    {
-
-    }
 }

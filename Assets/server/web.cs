@@ -21,7 +21,7 @@ public class web : MonoBehaviour
 
     public void showuseritems()
     {
-        StartCoroutine(getItemsIDs(main.Instance.UserInfo.UserID));
+
     }
 
     public IEnumerator getText()
@@ -88,6 +88,12 @@ public class web : MonoBehaviour
                         main.Instance.UserInfo.SetInfo(username, password);
                         main.Instance.UserInfo.SetID(www.downloadHandler.text);
 
+
+                        main.Instance.UserProfile.SetActive(true);
+                        main.Instance.LoginUI.SetActive(false);
+
+
+
                     }
                     else
                     {
@@ -126,14 +132,14 @@ public class web : MonoBehaviour
             }
         }
     }
-
-    public IEnumerator getItemsIDs(string userID)
+    /*
+    public IEnumerator GetItemsIDs(string userID, System.Action<string> callback)
     {
         WWWForm form = new WWWForm();
         form.AddField("userID", userID);
 
 
-        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/winterDev_Backend/getUser.php", form))
+        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/winterDev_Backend/getItemsDS.php", form))
         {
             yield return www.Send();
 
@@ -145,8 +151,32 @@ public class web : MonoBehaviour
             {
                 Debug.Log(www.downloadHandler.text);
                 string jsonArray = www.downloadHandler.text;
+                callback(jsonArray);
             }
 
         }
     }
+    public IEnumerator GetItem(string itemID, System.Action<string> callback)
+    {
+        WWWForm form = new WWWForm();
+        form.AddField("itemID",itemID);
+
+        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/winterDev_Backend/getItem.php", form))
+        {
+            yield return www.Send();
+
+            if (www.isNetworkError || www.isHttpError)
+            {
+                Debug.Log(www.error);
+            }
+            else
+            {
+                Debug.Log(www.downloadHandler.text);
+                string jsonArray = www.downloadHandler.text;
+                callback(jsonArray);
+            }
+
+        }
+    }
+    */
 }
