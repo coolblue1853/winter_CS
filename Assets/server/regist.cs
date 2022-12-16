@@ -16,7 +16,8 @@ public class regist : MonoBehaviour
     void Start()
     {
 
-   
+
+
 
         registBotton.onClick.AddListener(() =>
         {

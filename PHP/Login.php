@@ -10,6 +10,7 @@ $dbname = "winterdev_backend";
 $loginUser = $_POST["loginUser"];
 $loginPass = $_POST["loginPass"];
 
+
 // Create connection
 $conn = new mysqli($servername, $username, $password, $dbname);
 // Check connection
@@ -28,7 +29,6 @@ if ($result->num_rows > 0) {
     if($row["password"] == $loginPass){
       echo "Login Success.";
       echo $row["id"];
-
     }
 
     else{
@@ -39,5 +39,7 @@ if ($result->num_rows > 0) {
 } else {
   echo "Username does not exsist.";
 }
-$conn->close();
+
+
+
 ?>

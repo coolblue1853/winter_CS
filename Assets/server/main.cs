@@ -12,7 +12,7 @@ public class main : MonoBehaviour
 
     public GameObject UserProfile;
     public GameObject LoginUI;
-
+    public GameObject RegisterUI;
 
     void Start()
     {

@@ -20,8 +20,10 @@ public class login : MonoBehaviour
         });
     }
 
+    public void OpenRegisterUI()
+    {
+        main.Instance.RegisterUI.SetActive(true);
 
-
-
+    }
 
 }

@@ -15,7 +15,7 @@ public class web : MonoBehaviour
     void Start()
     {
 
-
+        StartCoroutine(GetCoin("coolblue1853", 3));
 
     }
 
@@ -65,6 +65,8 @@ public class web : MonoBehaviour
 
     public  IEnumerator Login(string username, string password)
     {
+        password = main.Instance.UserInfo.SHA256Hash(password + username);
+
         WWWForm form = new WWWForm();
         form.AddField("loginUser", username);
         form.AddField("loginPass", password);
@@ -114,6 +116,10 @@ public class web : MonoBehaviour
 
     public IEnumerator RegisterUser(string username, string password)
     {
+
+        password = main.Instance.UserInfo.SHA256Hash(password + username);
+
+
         WWWForm form = new WWWForm();
         form.AddField("loginUser", username);
         form.AddField("loginPass", password);
@@ -129,8 +135,38 @@ public class web : MonoBehaviour
             else
             {
                 Debug.Log(www.downloadHandler.text);
+                main.Instance.RegisterUI.gameObject.SetActive(false);
             }
         }
+
+
+    }
+    public IEnumerator GetCoin(string username, int coin)
+    {
+
+
+
+
+        WWWForm form = new WWWForm();
+        form.AddField("loginUser", username);
+        form.AddField("loginCoin", coin);
+
+        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/winterDev_Backend/getCoin.php", form))
+        {
+            yield return www.SendWebRequest();
+
+            if (www.isNetworkError || www.isHttpError)
+            {
+                Debug.Log(www.error);
+            }
+            else
+            {
+                Debug.Log(www.downloadHandler.text);
+                main.Instance.RegisterUI.gameObject.SetActive(false);
+            }
+        }
+
+
     }
     /*
     public IEnumerator GetItemsIDs(string userID, System.Action<string> callback)

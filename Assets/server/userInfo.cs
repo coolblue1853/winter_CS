@@ -1,4 +1,8 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using System.Text;
+using System.Collections.Generic;
+using UnityEngine;
+using System.Security.Cryptography;
 
 public class userInfo : MonoBehaviour
 {
@@ -36,5 +40,18 @@ public class userInfo : MonoBehaviour
         wrongUser.SetActive(false);
         wrongPass.SetActive(false);
     }
+
+    public string SHA256Hash(string data)
+    {
+        SHA256 sha = new SHA256Managed();
+        byte[] hash = sha.ComputeHash(Encoding.ASCII.GetBytes(data));
+        StringBuilder stringBuilder = new StringBuilder();
+        foreach (byte b in hash)
+        {
+            stringBuilder.AppendFormat("{0:x2}", b);
+        }
+        return stringBuilder.ToString();
+    }   
+
 
 }

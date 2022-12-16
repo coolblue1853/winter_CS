@@ -1872,7 +1872,6 @@ GameObject:
   - component: {fileID: 970634477}
   - component: {fileID: 970634479}
   - component: {fileID: 970634480}
-  - component: {fileID: 970634481}
   m_Layer: 0
   m_Name: WebCennectManager
   m_TagString: Untagged
@@ -1923,6 +1922,7 @@ MonoBehaviour:
   login: {fileID: 1179165905}
   UserProfile: {fileID: 1418736525}
   LoginUI: {fileID: 633521733}
+  RegisterUI: {fileID: 215319083}
 --- !u!114 &970634480
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1938,19 +1938,6 @@ MonoBehaviour:
   UserName: 
   wrongUser: {fileID: 138246343}
   wrongPass: {fileID: 297717220}
---- !u!114 &970634481
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 970634476}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fa2be727b1cb3164cb7c59d932de58f1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  loginSuccesUI: {fileID: 753400295}
 --- !u!1 &1036480045
 GameObject:
   m_ObjectHideFlags: 0
@@ -3307,7 +3294,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1605679097
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3558,7 +3545,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1179165905}
-        m_MethodName: OepnRegisterUi
+        m_MethodName: OpenRegisterUI
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -4333,7 +4320,6 @@ GameObject:
   - component: {fileID: 2052791463}
   - component: {fileID: 2052791462}
   - component: {fileID: 2052791461}
-  - component: {fileID: 2052791464}
   m_Layer: 5
   m_Name: item
   m_TagString: Untagged
@@ -4421,15 +4407,3 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2052791459}
   m_CullTransparentMesh: 0
---- !u!114 &2052791464
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2052791459}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cce4b122c1c8e6944956bbf9d2651349, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
