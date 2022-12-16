@@ -2,7 +2,7 @@
 using System.Collections;
 using UnityEngine;
 using UnityEngine.Networking;
-
+using System;
 
 
 // UnityWebRequest.Get example
@@ -15,14 +15,10 @@ public class web : MonoBehaviour
     void Start()
     {
 
-        StartCoroutine(GetCoin("coolblue1853", 3));
-
     }
 
-    public void showuseritems()
-    {
 
-    }
+
 
     public IEnumerator getText()
     {
@@ -89,11 +85,14 @@ public class web : MonoBehaviour
                         main.Instance.UserInfo.resetWrongUI();
                         main.Instance.UserInfo.SetInfo(username, password);
                         main.Instance.UserInfo.SetID(www.downloadHandler.text);
+                        StartCoroutine(readExpData(username));
+                        StartCoroutine(readCoinData(username));
+                        StartCoroutine(readLevelData(username));
+                        StartCoroutine(readCPowerData(username));
 
 
                         main.Instance.UserProfile.SetActive(true);
                         main.Instance.LoginUI.SetActive(false);
-
 
 
                     }
@@ -141,15 +140,14 @@ public class web : MonoBehaviour
 
 
     }
-    public IEnumerator GetCoin(string username, int coin)
+    public IEnumerator GetCoin(string username, long coin,int exp)
     {
-
-
 
 
         WWWForm form = new WWWForm();
         form.AddField("loginUser", username);
-        form.AddField("loginCoin", coin);
+        form.AddField("loginCoin", coin.ToString());
+        form.AddField("loginExp", exp);
 
         using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/winterDev_Backend/getCoin.php", form))
         {
@@ -161,12 +159,154 @@ public class web : MonoBehaviour
             }
             else
             {
-                Debug.Log(www.downloadHandler.text);
-                main.Instance.RegisterUI.gameObject.SetActive(false);
+                StartCoroutine(readExpData(username));
+                StartCoroutine(readCoinData(username));
+                StartCoroutine(readCPowerData(username));
             }
         }
 
 
+    }
+    public IEnumerator SetLevel(string username, int level)
+    {
+
+
+        WWWForm form = new WWWForm();
+        form.AddField("loginUser", username);
+        form.AddField("loginLevel", level);
+
+
+        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/winterDev_Backend/setLevel.php", form))
+        {
+            yield return www.SendWebRequest();
+
+            if (www.isNetworkError || www.isHttpError)
+            {
+                Debug.Log(www.error);
+            }
+            else
+            {
+                Debug.Log(www.downloadHandler.text);
+
+            }
+        }
+
+
+    }
+    public IEnumerator SetCPower(string username)
+    {
+
+
+        WWWForm form = new WWWForm();
+        form.AddField("loginUser", username);
+
+
+        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/winterDev_Backend/setCPower.php", form))
+        {
+            yield return www.SendWebRequest();
+
+            if (www.isNetworkError || www.isHttpError)
+            {
+                Debug.Log(www.error);
+            }
+            else
+            {
+                Debug.Log(www.downloadHandler.text);
+
+            }
+        }
+
+
+    }
+
+
+
+    public IEnumerator readCoinData(string username)
+    {
+
+
+        WWWForm form = new WWWForm();
+        form.AddField("loginUser", username);
+
+        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/winterDev_Backend/readCoinData.php", form))
+        {
+            yield return www.SendWebRequest();
+
+            if (www.isNetworkError || www.isHttpError)
+            {
+                Debug.Log(www.error);
+            }
+            else
+            {
+               
+                main.Instance.UserInfo.SetCoin(Int64.Parse(www.downloadHandler.text));
+
+            }
+        }
+    }
+
+    public IEnumerator readExpData(string username)
+    {
+
+
+        WWWForm form = new WWWForm();
+        form.AddField("loginUser", username);
+
+        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/winterDev_Backend/readExpData.php", form))
+        {
+            yield return www.SendWebRequest();
+
+            if (www.isNetworkError || www.isHttpError)
+            {
+                Debug.Log(www.error);
+            }
+            else
+            {
+                main.Instance.UserInfo.SetExp(Int64.Parse(www.downloadHandler.text));
+            }
+        }
+    }
+    public IEnumerator readLevelData(string username)
+    {
+
+
+        WWWForm form = new WWWForm();
+        form.AddField("loginUser", username);
+
+        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/winterDev_Backend/readLevelData.php", form))
+        {
+            yield return www.SendWebRequest();
+
+            if (www.isNetworkError || www.isHttpError)
+            {
+                Debug.Log(www.error);
+            }
+            else
+            {
+                main.Instance.UserInfo.SetLevel(Int32.Parse(www.downloadHandler.text));
+            }
+        }
+    }
+    public IEnumerator readCPowerData(string username)
+    {
+
+
+        WWWForm form = new WWWForm();
+        form.AddField("loginUser", username);
+
+        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/winterDev_Backend/readCPowerData.php", form))
+        {
+            yield return www.SendWebRequest();
+
+            if (www.isNetworkError || www.isHttpError)
+            {
+                Debug.Log(www.error);
+            }
+            else
+            {
+                main.Instance.UserInfo.SetCPower(Int32.Parse(www.downloadHandler.text));
+            }
+        }
     }
     /*
     public IEnumerator GetItemsIDs(string userID, System.Action<string> callback)
