@@ -6,8 +6,10 @@ using System;
 public class PlayManager : MonoBehaviour
 {
     long CPowerUpgradeCost;
+    long EPowerUpgradeCost;
 
     public Text CPowerUpgradeCostTxt;
+    public Text EPowerUpgradeCostTxt;
 
     public GameObject ShopUi;
 
@@ -19,14 +21,18 @@ public class PlayManager : MonoBehaviour
     void ShopCostUpdater()
     {
 
-        CPowerUpgradeCost = 100 * (int)(Mathf.Pow(2, main.Instance.UserInfo.CPower));
+        CPowerUpgradeCost = 10 * (int)(Mathf.Pow(2, main.Instance.UserInfo.CPower));
         CPowerUpgradeCostTxt.text = CPowerUpgradeCost.ToString();
+
+
+        EPowerUpgradeCost = 20 * (int)(Mathf.Pow(2, main.Instance.UserInfo.EPower));
+        EPowerUpgradeCostTxt.text = EPowerUpgradeCost.ToString();
     }
 
 
     public void Click()
     {
-        StartCoroutine(main.Instance.web.GetCoin(main.Instance.UserInfo.UserName, main.Instance.UserInfo.CPower, 1));
+        StartCoroutine(main.Instance.web.GetCoin(main.Instance.UserInfo.UserName, main.Instance.UserInfo.CPower, main.Instance.UserInfo.EPower));
 
     }
     public void Logout()
@@ -55,4 +61,16 @@ public class PlayManager : MonoBehaviour
 
         }
     }
+
+    public void ExpUpgrade()
+    {
+        if (main.Instance.UserInfo.Coins >= EPowerUpgradeCost)
+        {
+            StartCoroutine(main.Instance.web.GetCoin(main.Instance.UserInfo.UserName, -EPowerUpgradeCost, 0));
+            StartCoroutine(main.Instance.web.SetEPower(main.Instance.UserInfo.UserName));
+
+
+        }
+    }
 }
+

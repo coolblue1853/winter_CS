@@ -89,7 +89,7 @@ public class web : MonoBehaviour
                         StartCoroutine(readCoinData(username));
                         StartCoroutine(readLevelData(username));
                         StartCoroutine(readCPowerData(username));
-
+                        StartCoroutine(readEPowerData(username));
 
                         main.Instance.UserProfile.SetActive(true);
                         main.Instance.LoginUI.SetActive(false);
@@ -162,6 +162,7 @@ public class web : MonoBehaviour
                 StartCoroutine(readExpData(username));
                 StartCoroutine(readCoinData(username));
                 StartCoroutine(readCPowerData(username));
+                StartCoroutine(readEPowerData(username));
             }
         }
 
@@ -219,7 +220,31 @@ public class web : MonoBehaviour
 
     }
 
+    public IEnumerator SetEPower(string username)
+    {
 
+
+        WWWForm form = new WWWForm();
+        form.AddField("loginUser", username);
+
+
+        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/winterDev_Backend/setEPower.php", form))
+        {
+            yield return www.SendWebRequest();
+
+            if (www.isNetworkError || www.isHttpError)
+            {
+                Debug.Log(www.error);
+            }
+            else
+            {
+                Debug.Log(www.downloadHandler.text);
+
+            }
+        }
+
+
+    }
 
     public IEnumerator readCoinData(string username)
     {
@@ -308,16 +333,16 @@ public class web : MonoBehaviour
             }
         }
     }
-    /*
-    public IEnumerator GetItemsIDs(string userID, System.Action<string> callback)
+    public IEnumerator readEPowerData(string username)
     {
+
+
         WWWForm form = new WWWForm();
-        form.AddField("userID", userID);
+        form.AddField("loginUser", username);
 
-
-        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/winterDev_Backend/getItemsDS.php", form))
+        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/winterDev_Backend/readEPowerData.php", form))
         {
-            yield return www.Send();
+            yield return www.SendWebRequest();
 
             if (www.isNetworkError || www.isHttpError)
             {
@@ -325,34 +350,9 @@ public class web : MonoBehaviour
             }
             else
             {
-                Debug.Log(www.downloadHandler.text);
-                string jsonArray = www.downloadHandler.text;
-                callback(jsonArray);
+                main.Instance.UserInfo.SetEPower(Int32.Parse(www.downloadHandler.text));
             }
-
         }
     }
-    public IEnumerator GetItem(string itemID, System.Action<string> callback)
-    {
-        WWWForm form = new WWWForm();
-        form.AddField("itemID",itemID);
 
-        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/winterDev_Backend/getItem.php", form))
-        {
-            yield return www.Send();
-
-            if (www.isNetworkError || www.isHttpError)
-            {
-                Debug.Log(www.error);
-            }
-            else
-            {
-                Debug.Log(www.downloadHandler.text);
-                string jsonArray = www.downloadHandler.text;
-                callback(jsonArray);
-            }
-
-        }
-    }
-    */
 }

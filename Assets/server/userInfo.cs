@@ -12,6 +12,7 @@ public class userInfo : MonoBehaviour
     string UserPassword;
     public int Level;
     public int CPower;
+    public int EPower;
     public long Coins;
     public long Exp;
 
@@ -25,7 +26,7 @@ public class userInfo : MonoBehaviour
     public Text CoinTxt;
     public Text ExpTxt;
     public Text CPowerTxt;
-
+    public Text EPowerTxt;
     //Item info
 
     void Update()
@@ -41,7 +42,7 @@ public class userInfo : MonoBehaviour
         CoinTxt.text = Coins.ToString();
         ExpTxt.text = Exp.ToString();
         CPowerTxt.text = CPower.ToString();
-
+        EPowerTxt.text = EPower.ToString();
     }
 
 
@@ -73,7 +74,11 @@ public class userInfo : MonoBehaviour
         CPower = cpower;
 
     }
+    public void SetEPower(int epower)
+    {
+        EPower = epower;
 
+    }
 
     public void WrongUsername()
     {
