@@ -22,7 +22,7 @@ public class web : MonoBehaviour
 
     public IEnumerator getText()
     {
-        using (UnityWebRequest www = UnityWebRequest.Get("http://localhost/winterDev_Backend/getData.php"))
+        using (UnityWebRequest www = UnityWebRequest.Get("http://http://175.201.14.153:443/winterDev_Backend/getData.php"))
         {
             yield return www.Send();
 
@@ -41,7 +41,7 @@ public class web : MonoBehaviour
 
     public IEnumerator getUsers()
     {
-        using (UnityWebRequest www = UnityWebRequest.Get("http://localhost/winterDev_Backend/getUser.php"))
+        using (UnityWebRequest www = UnityWebRequest.Get("http://175.201.14.153:443/winterDev_Backend/getUser.php"))
         {
             yield return www.Send();
 
@@ -67,7 +67,7 @@ public class web : MonoBehaviour
         form.AddField("loginUser", username);
         form.AddField("loginPass", password);
 
-        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/winterDev_Backend/Login.php", form))
+        using (UnityWebRequest www = UnityWebRequest.Post("http://175.201.14.153:443/winterDev_Backend/Login.php", form))
         {
             yield return www.SendWebRequest();
 
@@ -128,7 +128,7 @@ public class web : MonoBehaviour
         form.AddField("loginUser", username);
         form.AddField("loginPass", password);
 
-        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/winterDev_Backend/registerUser.php", form))
+        using (UnityWebRequest www = UnityWebRequest.Post("http://175.201.14.153:443/winterDev_Backend/registerUser.php", form))
         {
             yield return www.SendWebRequest();
 
@@ -163,7 +163,7 @@ public class web : MonoBehaviour
         form.AddField("loginCoin", coin.ToString());
         form.AddField("loginExp", exp.ToString());
 
-        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/winterDev_Backend/getCoin.php", form))
+        using (UnityWebRequest www = UnityWebRequest.Post("http://175.201.14.153:443/winterDev_Backend/getCoin.php", form))
         {
             yield return www.SendWebRequest();
 
@@ -192,7 +192,7 @@ public class web : MonoBehaviour
         form.AddField("loginLevel", level);
 
 
-        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/winterDev_Backend/setLevel.php", form))
+        using (UnityWebRequest www = UnityWebRequest.Post("http://175.201.14.153:443/winterDev_Backend/setLevel.php", form))
         {
             yield return www.SendWebRequest();
 
@@ -218,7 +218,7 @@ public class web : MonoBehaviour
         form.AddField("loginUser", username);
 
 
-        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/winterDev_Backend/setCPower.php", form))
+        using (UnityWebRequest www = UnityWebRequest.Post("http://175.201.14.153:443/winterDev_Backend/setCPower.php", form))
         {
             yield return www.SendWebRequest();
 
@@ -243,7 +243,7 @@ public class web : MonoBehaviour
         form.AddField("loginUser", username);
 
 
-        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/winterDev_Backend/setEPower.php", form))
+        using (UnityWebRequest www = UnityWebRequest.Post("http://175.201.14.153:443/winterDev_Backend/setEPower.php", form))
         {
             yield return www.SendWebRequest();
 
@@ -268,7 +268,7 @@ public class web : MonoBehaviour
         form.AddField("loginUser", username);
 
 
-        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/winterDev_Backend/setAEPower.php", form))
+        using (UnityWebRequest www = UnityWebRequest.Post("http://175.201.14.153:443/winterDev_Backend/setAEPower.php", form))
         {
             yield return www.SendWebRequest();
 
@@ -293,7 +293,7 @@ public class web : MonoBehaviour
         form.AddField("loginUser", username);
 
 
-        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/winterDev_Backend/setACPower.php", form))
+        using (UnityWebRequest www = UnityWebRequest.Post("http://175.201.14.153:443/winterDev_Backend/setACPower.php", form))
         {
             yield return www.SendWebRequest();
 
@@ -318,7 +318,7 @@ public class web : MonoBehaviour
         form.AddField("loginUser", username);
 
 
-        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/winterDev_Backend/setAESpeed.php", form))
+        using (UnityWebRequest www = UnityWebRequest.Post("http://175.201.14.153:443/winterDev_Backend/setAESpeed.php", form))
         {
             yield return www.SendWebRequest();
 
@@ -343,7 +343,7 @@ public class web : MonoBehaviour
         form.AddField("loginUser", username);
 
 
-        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/winterDev_Backend/setACSpeed.php", form))
+        using (UnityWebRequest www = UnityWebRequest.Post("http://175.201.14.153:443/winterDev_Backend/setACSpeed.php", form))
         {
             yield return www.SendWebRequest();
 
@@ -367,7 +367,7 @@ public class web : MonoBehaviour
         WWWForm form = new WWWForm();
         form.AddField("loginUser", username);
 
-        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/winterDev_Backend/readCoinData.php", form))
+        using (UnityWebRequest www = UnityWebRequest.Post("http://175.201.14.153:443/winterDev_Backend/readCoinData.php", form))
         {
             yield return www.SendWebRequest();
 
@@ -391,7 +391,7 @@ public class web : MonoBehaviour
         WWWForm form = new WWWForm();
         form.AddField("loginUser", username);
 
-        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/winterDev_Backend/readExpData.php", form))
+        using (UnityWebRequest www = UnityWebRequest.Post("http://175.201.14.153:443/winterDev_Backend/readExpData.php", form))
         {
             yield return www.SendWebRequest();
 
@@ -412,7 +412,7 @@ public class web : MonoBehaviour
         WWWForm form = new WWWForm();
         form.AddField("loginUser", username);
 
-        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/winterDev_Backend/readLevelData.php", form))
+        using (UnityWebRequest www = UnityWebRequest.Post("http://175.201.14.153:443/winterDev_Backend/readLevelData.php", form))
         {
             yield return www.SendWebRequest();
 
@@ -433,7 +433,7 @@ public class web : MonoBehaviour
         WWWForm form = new WWWForm();
         form.AddField("loginUser", username);
 
-        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/winterDev_Backend/readCPowerData.php", form))
+        using (UnityWebRequest www = UnityWebRequest.Post("http://175.201.14.153:443/winterDev_Backend/readCPowerData.php", form))
         {
             yield return www.SendWebRequest();
 
@@ -454,7 +454,7 @@ public class web : MonoBehaviour
         WWWForm form = new WWWForm();
         form.AddField("loginUser", username);
 
-        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/winterDev_Backend/readEPowerData.php", form))
+        using (UnityWebRequest www = UnityWebRequest.Post("http://175.201.14.153:443/winterDev_Backend/readEPowerData.php", form))
         {
             yield return www.SendWebRequest();
 
@@ -476,7 +476,7 @@ public class web : MonoBehaviour
         WWWForm form = new WWWForm();
         form.AddField("loginUser", username);
 
-        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/winterDev_Backend/readAEPowerData.php", form))
+        using (UnityWebRequest www = UnityWebRequest.Post("http://175.201.14.153:443/winterDev_Backend/readAEPowerData.php", form))
         {
             yield return www.SendWebRequest();
 
@@ -497,7 +497,7 @@ public class web : MonoBehaviour
         WWWForm form = new WWWForm();
         form.AddField("loginUser", username);
 
-        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/winterDev_Backend/readACPowerData.php", form))
+        using (UnityWebRequest www = UnityWebRequest.Post("http://175.201.14.153:443/winterDev_Backend/readACPowerData.php", form))
         {
             yield return www.SendWebRequest();
 
@@ -518,7 +518,7 @@ public class web : MonoBehaviour
         WWWForm form = new WWWForm();
         form.AddField("loginUser", username);
 
-        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/winterDev_Backend/readAESpeedData.php", form))
+        using (UnityWebRequest www = UnityWebRequest.Post("http://175.201.14.153:443/winterDev_Backend/readAESpeedData.php", form))
         {
             yield return www.SendWebRequest();
 
@@ -539,7 +539,7 @@ public class web : MonoBehaviour
         WWWForm form = new WWWForm();
         form.AddField("loginUser", username);
 
-        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/winterDev_Backend/readACSpeedData.php", form))
+        using (UnityWebRequest www = UnityWebRequest.Post("http://175.201.14.153:443/winterDev_Backend/readACSpeedData.php", form))
         {
             yield return www.SendWebRequest();
 
@@ -562,7 +562,7 @@ public class web : MonoBehaviour
         WWWForm form = new WWWForm();
 
 
-        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/winterDev_Backend/getRankExp.php", form))
+        using (UnityWebRequest www = UnityWebRequest.Post("http://175.201.14.153:443/winterDev_Backend/getRankExp.php", form))
         {
             yield return www.SendWebRequest();
 
@@ -584,7 +584,7 @@ public class web : MonoBehaviour
         WWWForm form = new WWWForm();
 
 
-        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/winterDev_Backend/getRankUser.php", form))
+        using (UnityWebRequest www = UnityWebRequest.Post("http://175.201.14.153:443/winterDev_Backend/getRankUser.php", form))
         {
             yield return www.SendWebRequest();
 
