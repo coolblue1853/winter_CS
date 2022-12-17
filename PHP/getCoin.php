@@ -2,7 +2,6 @@
 $servername = "localhost";
 $username = "root";
 $coin = "";
-$exp = "";
 $dbname = "winterdev_backend";
 
 //variables submited by user
@@ -12,29 +11,23 @@ $loginCoin = $_POST["loginCoin"];
 $loginExp = $_POST["loginExp"];
 
 // Create connection
-$conn = new mysqli($servername, $username, $coin, $exp, $dbname);
+$conn = new mysqli($servername, $username, $coin, $dbname);
 // Check connection
 if ($conn->connect_error) {
   die("Connection failed: " . $conn->connect_error);
 }
 
-$sql = "SELECT username FROM users WHERE username = '". $loginUser. "'";
-
-$result = $conn->query($sql);
-
-if ($result->num_rows > 0) {  
-
-    $sql2 = "UPDATE  users SET coin, exp = coin +'". $loginCoin. "', exp +'". $loginExp. "' ";
-    if ($conn->query($sql2) === TRUE) {
-    } else {
-      echo "Error: " . $sql2 . "<br>" . $conn->error;
-    }
-    
-
-
+$sql2 = "UPDATE  users SET coin = coin + $loginCoin  WHERE username = '". $loginUser. "'";
+if ($conn->query($sql2) === TRUE) {
 } else {
-  //insert user in database
-
+  echo "Error: " . $sql2 . "<br>" . $conn->error;
 }
+
+$sql3 = "UPDATE  users SET exp = exp + $loginExp  WHERE username = '". $loginUser. "'";
+if ($conn->query($sql3) === TRUE) {
+} else {
+  echo "Error: " . $sql3 . "<br>" . $conn->error;
+}
+
 $conn->close();
 ?>
