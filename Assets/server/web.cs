@@ -91,6 +91,11 @@ public class web : MonoBehaviour
                         StartCoroutine(readCPowerData(username));
                         StartCoroutine(readEPowerData(username));
 
+                        StartCoroutine(readAEPowerData(username));
+                        StartCoroutine(readACPowerData(username));
+                        StartCoroutine(readAESpeedData(username));
+                        StartCoroutine(readACSpeedData(username));
+
                         main.Instance.UserProfile.SetActive(true);
                         main.Instance.LoginUI.SetActive(false);
 
@@ -140,14 +145,14 @@ public class web : MonoBehaviour
 
 
     }
-    public IEnumerator GetCoin(string username, long coin,int exp)
+    public IEnumerator GetCoin(string username, long coin, long exp)
     {
 
 
         WWWForm form = new WWWForm();
         form.AddField("loginUser", username);
         form.AddField("loginCoin", coin.ToString());
-        form.AddField("loginExp", exp);
+        form.AddField("loginExp", exp.ToString());
 
         using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/winterDev_Backend/getCoin.php", form))
         {
@@ -161,13 +166,18 @@ public class web : MonoBehaviour
             {
                 StartCoroutine(readExpData(username));
                 StartCoroutine(readCoinData(username));
-                StartCoroutine(readCPowerData(username));
-                StartCoroutine(readEPowerData(username));
+
+
+
             }
         }
 
 
     }
+
+
+
+
     public IEnumerator SetLevel(string username, int level)
     {
 
@@ -187,7 +197,8 @@ public class web : MonoBehaviour
             }
             else
             {
-                Debug.Log(www.downloadHandler.text);
+                StartCoroutine(readLevelData(username));
+
 
             }
         }
@@ -212,8 +223,8 @@ public class web : MonoBehaviour
             }
             else
             {
-                Debug.Log(www.downloadHandler.text);
 
+                StartCoroutine(readCPowerData(username));
             }
         }
 
@@ -238,7 +249,7 @@ public class web : MonoBehaviour
             }
             else
             {
-                Debug.Log(www.downloadHandler.text);
+                StartCoroutine(readEPowerData(username));
 
             }
         }
@@ -246,6 +257,106 @@ public class web : MonoBehaviour
 
     }
 
+    public IEnumerator SetAEPower(string username)
+    {
+
+
+        WWWForm form = new WWWForm();
+        form.AddField("loginUser", username);
+
+
+        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/winterDev_Backend/setAEPower.php", form))
+        {
+            yield return www.SendWebRequest();
+
+            if (www.isNetworkError || www.isHttpError)
+            {
+                Debug.Log(www.error);
+            }
+            else
+            {
+                StartCoroutine(readAEPowerData(username));
+
+            }
+        }
+
+
+    }
+    public IEnumerator SetACPower(string username)
+    {
+
+
+        WWWForm form = new WWWForm();
+        form.AddField("loginUser", username);
+
+
+        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/winterDev_Backend/setACPower.php", form))
+        {
+            yield return www.SendWebRequest();
+
+            if (www.isNetworkError || www.isHttpError)
+            {
+                Debug.Log(www.error);
+            }
+            else
+            {
+                StartCoroutine(readACPowerData(username));
+
+            }
+        }
+
+
+    }
+    public IEnumerator SetAESpeed(string username)
+    {
+
+
+        WWWForm form = new WWWForm();
+        form.AddField("loginUser", username);
+
+
+        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/winterDev_Backend/setAESpeed.php", form))
+        {
+            yield return www.SendWebRequest();
+
+            if (www.isNetworkError || www.isHttpError)
+            {
+                Debug.Log(www.error);
+            }
+            else
+            {
+                StartCoroutine(readAESpeedData(username));
+
+            }
+        }
+
+
+    }
+    public IEnumerator SetACSpeed(string username)
+    {
+
+
+        WWWForm form = new WWWForm();
+        form.AddField("loginUser", username);
+
+
+        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/winterDev_Backend/setACSpeed.php", form))
+        {
+            yield return www.SendWebRequest();
+
+            if (www.isNetworkError || www.isHttpError)
+            {
+                Debug.Log(www.error);
+            }
+            else
+            {
+                StartCoroutine(readACSpeedData(username));
+
+            }
+        }
+
+
+    }
     public IEnumerator readCoinData(string username)
     {
 
@@ -308,7 +419,7 @@ public class web : MonoBehaviour
             }
             else
             {
-                main.Instance.UserInfo.SetLevel(Int32.Parse(www.downloadHandler.text));
+                main.Instance.UserInfo.SetLevel(Int64.Parse(www.downloadHandler.text));
             }
         }
     }
@@ -329,7 +440,7 @@ public class web : MonoBehaviour
             }
             else
             {
-                main.Instance.UserInfo.SetCPower(Int32.Parse(www.downloadHandler.text));
+                main.Instance.UserInfo.SetCPower(Int64.Parse(www.downloadHandler.text));
             }
         }
     }
@@ -350,9 +461,139 @@ public class web : MonoBehaviour
             }
             else
             {
-                main.Instance.UserInfo.SetEPower(Int32.Parse(www.downloadHandler.text));
+                main.Instance.UserInfo.SetEPower(Int64.Parse(www.downloadHandler.text));
             }
         }
     }
 
+    public IEnumerator readAEPowerData(string username)
+    {
+
+
+        WWWForm form = new WWWForm();
+        form.AddField("loginUser", username);
+
+        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/winterDev_Backend/readAEPowerData.php", form))
+        {
+            yield return www.SendWebRequest();
+
+            if (www.isNetworkError || www.isHttpError)
+            {
+                Debug.Log(www.error);
+            }
+            else
+            {
+                main.Instance.UserInfo.SetAEPower(Int64.Parse(www.downloadHandler.text));
+            }
+        }
+    }
+    public IEnumerator readACPowerData(string username)
+    {
+
+
+        WWWForm form = new WWWForm();
+        form.AddField("loginUser", username);
+
+        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/winterDev_Backend/readACPowerData.php", form))
+        {
+            yield return www.SendWebRequest();
+
+            if (www.isNetworkError || www.isHttpError)
+            {
+                Debug.Log(www.error);
+            }
+            else
+            {
+                main.Instance.UserInfo.SetACPower(Int64.Parse(www.downloadHandler.text));
+            }
+        }
+    }
+    public IEnumerator readAESpeedData(string username)
+    {
+
+
+        WWWForm form = new WWWForm();
+        form.AddField("loginUser", username);
+
+        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/winterDev_Backend/readAESpeedData.php", form))
+        {
+            yield return www.SendWebRequest();
+
+            if (www.isNetworkError || www.isHttpError)
+            {
+                Debug.Log(www.error);
+            }
+            else
+            {
+                main.Instance.UserInfo.SetAESpeed(Int64.Parse(www.downloadHandler.text));
+            }
+        }
+    }
+    public IEnumerator readACSpeedData(string username)
+    {
+
+
+        WWWForm form = new WWWForm();
+        form.AddField("loginUser", username);
+
+        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/winterDev_Backend/readACSpeedData.php", form))
+        {
+            yield return www.SendWebRequest();
+
+            if (www.isNetworkError || www.isHttpError)
+            {
+                Debug.Log(www.error);
+            }
+            else
+            {
+                main.Instance.UserInfo.SetACSpeed(Int64.Parse(www.downloadHandler.text));
+            }
+        }
+    }
+
+
+    public IEnumerator GetRankExp()
+    {
+
+
+        WWWForm form = new WWWForm();
+
+
+        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/winterDev_Backend/getRankExp.php", form))
+        {
+            yield return www.SendWebRequest();
+
+            if (www.isNetworkError || www.isHttpError)
+            {
+                Debug.Log(www.error);
+            }
+            else
+            {
+    
+                main.Instance.UserInfo.SetRankExp(Int64.Parse(www.downloadHandler.text));
+            }
+        }
+    }
+    public IEnumerator GetRankUser()
+    {
+
+
+        WWWForm form = new WWWForm();
+
+
+        using (UnityWebRequest www = UnityWebRequest.Post("http://localhost/winterDev_Backend/getRankUser.php", form))
+        {
+            yield return www.SendWebRequest();
+
+            if (www.isNetworkError || www.isHttpError)
+            {
+                Debug.Log(www.error);
+            }
+            else
+            {
+                main.Instance.UserInfo.SetRankUser(www.downloadHandler.text);
+
+            }
+        }
+    }
 }

@@ -10,13 +10,18 @@ public class userInfo : MonoBehaviour
     public string UserID { get; private set; }
     public string UserName;
     string UserPassword;
-    public int Level;
-    public int CPower;
-    public int EPower;
+    public long Level;
     public long Coins;
     public long Exp;
+    public long CPower;
+    public long EPower;
+    public long ACPower;
+    public long ACSpeed;
+    public long AEPower;
+    public long AESpeed;
 
-
+    public string RankUser;
+    public long RankExp;
 
     public GameObject wrongUser;
     public GameObject wrongPass;
@@ -27,6 +32,14 @@ public class userInfo : MonoBehaviour
     public Text ExpTxt;
     public Text CPowerTxt;
     public Text EPowerTxt;
+    public Text ACPowerTxt;
+    public Text ACSpeedTxt;
+    public Text AEPowerTxt;
+    public Text AESpeedTxt;
+
+    public Text RankUserTxt;
+    public Text RankExpTxt;
+
     //Item info
 
     void Update()
@@ -43,6 +56,13 @@ public class userInfo : MonoBehaviour
         ExpTxt.text = Exp.ToString();
         CPowerTxt.text = CPower.ToString();
         EPowerTxt.text = EPower.ToString();
+        AEPowerTxt.text = AEPower.ToString();
+        ACPowerTxt.text = ACPower.ToString();
+        AESpeedTxt.text = AESpeed.ToString();
+        ACSpeedTxt.text = ACSpeed.ToString();
+
+        RankUserTxt.text = RankUser.ToString();
+        RankExpTxt.text = RankExp.ToString();
     }
 
 
@@ -65,18 +85,49 @@ public class userInfo : MonoBehaviour
     {
         UserID = id;
     }
-    public void SetLevel(int level)
+    public void SetLevel(long level)
     {
         Level = level;
     }
-    public void SetCPower(int cpower)
+    public void SetCPower(long cpower)
     {
         CPower = cpower;
 
     }
-    public void SetEPower(int epower)
+    public void SetEPower(long epower)
     {
         EPower = epower;
+
+    }
+    public void SetACPower(long acpower)
+    {
+        ACPower = acpower;
+
+    }
+    public void SetAEPower(long aepower)
+    {
+        AEPower = aepower;
+
+    }
+    public void SetACSpeed(long acspeed)
+    {
+        ACSpeed = acspeed;
+
+    }
+    public void SetAESpeed(long aespeed)
+    {
+        AESpeed = aespeed;
+
+    }
+
+    public void SetRankUser(string user)
+    {
+        RankUser = user;
+
+    }
+    public void SetRankExp(long exp)
+    {
+        RankExp = exp;
 
     }
 
