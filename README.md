@@ -57,11 +57,38 @@ JSON을 사용하지 않고 변수를 입력받는 것이 초반부분의 핵심
   
   
   
-[게임 동작 방식(튜토리얼)]
+[게임 동작 방식(튜토리얼)]  
+로그인 화면
+![로그인창](https://user-images.githubusercontent.com/54536107/208300947-b31b85f9-7fda-45ff-aa39-dc9de1846537.png)  
+(LOGIN) : 로그인 프로세스를 진행합니다.  
+(NEW REGIST) : 회원등록 UI를 켭니다.
+(QUIT GAME) : 게임을 종료합니다.  
 
+회원가입 화면  
+![회원가입창](https://user-images.githubusercontent.com/54536107/208301036-5e4b0402-fc4b-4e7e-a212-8feed532a5f8.png)  
+(REGIST) : 회원등록 프로세스를 진행합니다.  
 
+게임 내 메인화면  
+![메인화면](https://user-images.githubusercontent.com/54536107/208301058-1a973197-bed8-4847-937d-98e421f138bf.png)  
+(중앙의 마우스 커서) : 클릭하면 수치만큼의 경험치와 코인을 획득합니다.  
 
+(USERDATA) : 현재 접속한 유저의 정보를 표기합니다.  
+ㄴ (USERNAME) : 현재 접속한 유저의 이름  
+ㄴ (LEVEL) : 현재 유저의 레벨  
+ㄴ (COIN) : 현재 유저의 코인(상점에 이용하는 재화)  
+ㄴ (CLICK POWER) : 한번 클릭했을 때 얻는 코인의 수  
+ㄴ (EXP POWER) : 한번 클릭했을 때 얻는 경험치의 수  
+ㄴ (AUTO CLICK POWER) : 한번 자동으로 획득하는 코인의 수  
+ㄴ (AUTO CLICK SPEED) : 자동 획득이 작동하는 속도 (1 / 0.1 * 변수)  
+ㄴ (AUTO EXP POWER) : 한번 자동으로 획득하는 경험치의 수  
+ㄴ (AUTO EXP SPEED) : 자동 획득이 작동하는 속도 (1 / 0.1 * 변수)  
 
-
+(TOP RANKER) : 현재 랭킹 1위의 이름과 그 경험치를 표기, 60초마다 갱신.  
+(LOGOUT) : 현재 접속한 유저를 로그아웃 시킵니다. 실제로 서버에서 연결이 종료되는것은 아니고, 클라이언트단에서 처리합니다.  
+(SHOP) : 상점을 엽니다.  
+  
+상점화면
+![상점화면](https://user-images.githubusercontent.com/54536107/208301368-2afd7267-d219-4aec-a962-1facc9f3aa1b.png)  
+각각 변수에 해당하는 업그레이드가 존재합니다. 한번 구매시 가격은 2배율 씩 상승하게 됩니다.(제한 X)
 
 
