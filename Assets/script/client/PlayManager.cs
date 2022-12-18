@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using System;
 public class PlayManager : MonoBehaviour
 {
+    // 상점 구매 비용
     long CPowerUpgradeCost;
     long EPowerUpgradeCost;
 
@@ -13,6 +14,7 @@ public class PlayManager : MonoBehaviour
     long AEPUpgradeCost;
     long AESUpgradeCost;
 
+    //상점 구매 비용 텍스트
     public Text CPowerUpgradeCostTxt;
     public Text EPowerUpgradeCostTxt;
 
@@ -21,6 +23,8 @@ public class PlayManager : MonoBehaviour
     public Text AEPUpgradeCostTxt;
     public Text AESUpgradeCostTxt;
 
+
+    //상점관련 게임오브젝트(UI)
     public GameObject ShopUi;
 
     public GameObject AutoClickBuyButton;
@@ -41,18 +45,18 @@ public class PlayManager : MonoBehaviour
     }
 
 
+    // 랭킹 시스템 업데이트
     IEnumerator RankUpdater()
     {
         StartCoroutine(main.Instance.web.GetRankExp());
         StartCoroutine(main.Instance.web.GetRankUser());
         yield return new WaitForSecondsRealtime(60f);
-
         StartCoroutine(RankUpdater());
     }
 
 
 
-
+    //상점 가격 업데이터
     void ShopCostUpdater()
     {
         if(main.Instance.UserInfo.ACPower != 0)
@@ -98,11 +102,14 @@ public class PlayManager : MonoBehaviour
 
 
 
+    //클릭하여 경험치 + 코인획득
     public void Click()
     {
         StartCoroutine(main.Instance.web.GetCoin(main.Instance.UserInfo.UserName, main.Instance.UserInfo.CPower, main.Instance.UserInfo.EPower));
 
     }
+    
+    //게임 로그아웃
     public void Logout()
     {
         autoClicker.reset();
@@ -132,9 +139,10 @@ public class PlayManager : MonoBehaviour
         ShopUi.SetActive(true);
 
     }
+    // 상점구매 기능들
     public void ClickUpgrade()
     {
-        if(main.Instance.UserInfo.Coins >= CPowerUpgradeCost)
+        if (main.Instance.UserInfo.Coins >= CPowerUpgradeCost)
         {
             StartCoroutine(main.Instance.web.GetCoin(main.Instance.UserInfo.UserName, -CPowerUpgradeCost, 0));
             StartCoroutine(main.Instance.web.SetCPower(main.Instance.UserInfo.UserName));
@@ -142,7 +150,6 @@ public class PlayManager : MonoBehaviour
 
         }
     }
-
     public void ExpUpgrade()
     {
         if (main.Instance.UserInfo.Coins >= EPowerUpgradeCost)
@@ -152,7 +159,6 @@ public class PlayManager : MonoBehaviour
 
         }
     }
-
     public void ACBuy()
     {
         if (main.Instance.UserInfo.Coins >= 100)
@@ -163,7 +169,7 @@ public class PlayManager : MonoBehaviour
             StartCoroutine(main.Instance.web.SetACSpeed(main.Instance.UserInfo.UserName));
 
         }
-    }
+    } // 최초구매
     public void AEBuy()
     {
         if (main.Instance.UserInfo.Coins >= 100)
@@ -173,9 +179,7 @@ public class PlayManager : MonoBehaviour
             StartCoroutine(main.Instance.web.SetAESpeed(main.Instance.UserInfo.UserName));
 
         }
-    }
-
-
+    } // 최초구매
     public void ACPUpgrade()
     {
         if (main.Instance.UserInfo.Coins >= ACPUpgradeCost)
@@ -185,7 +189,6 @@ public class PlayManager : MonoBehaviour
 
         }
     }
-
     public void ACSUpgrade()
     {
         if (main.Instance.UserInfo.Coins >= ACSUpgradeCost)
@@ -195,7 +198,6 @@ public class PlayManager : MonoBehaviour
 
         }
     }
-
     public void AEPUpgrade()
     {
         if (main.Instance.UserInfo.Coins >= AEPUpgradeCost)
@@ -205,7 +207,6 @@ public class PlayManager : MonoBehaviour
 
         }
     }
-
     public void AESUpgrade()
     {
         if (main.Instance.UserInfo.Coins >= AESUpgradeCost)

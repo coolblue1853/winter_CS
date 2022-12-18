@@ -7,6 +7,7 @@ using System.Security.Cryptography;
 
 public class userInfo : MonoBehaviour
 {
+    // 유저 정보 모음
     public string UserID { get; private set; }
     public string UserName;
     string UserPassword;
@@ -22,13 +23,7 @@ public class userInfo : MonoBehaviour
 
     public string RankUser;
     public long RankExp;
-
-    public GameObject wrongUser;
-    public GameObject wrongPass;
-    public GameObject usernameAlready;
-
-
-
+    // 변수 텍스트
     public Text UserNameTxt;
     public Text LevelTxt;
     public Text CoinTxt;
@@ -43,6 +38,13 @@ public class userInfo : MonoBehaviour
     public Text RankUserTxt;
     public Text RankExpTxt;
 
+    // 로그인 안내 텍스트
+    public GameObject wrongUser;
+    public GameObject wrongPass;
+    public GameObject usernameAlready;
+
+
+
     //Item info
 
     void Update()
@@ -51,6 +53,7 @@ public class userInfo : MonoBehaviour
     }
     
 
+    // 유저 변수를 해당하는 텍스트에 소팅
      public void SetUserInfo()
     {
         UserNameTxt.text = UserName;
@@ -69,6 +72,7 @@ public class userInfo : MonoBehaviour
     }
 
 
+    // web에서 php를통해 받은 변수를 인스턴스 변수에 입력
     public void SetInfo(string username, string userpassword)
     {
         UserName = username;
@@ -134,6 +138,8 @@ public class userInfo : MonoBehaviour
 
     }
 
+
+    // 로그인 안내 함수
     public void WrongUsername()
     {
         wrongUser.SetActive(true);
@@ -158,6 +164,7 @@ public class userInfo : MonoBehaviour
         wrongPass.SetActive(false);
     }
 
+    // 암호화를 위한 해시함수
     public string SHA256Hash(string data)
     {
         SHA256 sha = new SHA256Managed();

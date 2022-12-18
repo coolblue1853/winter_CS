@@ -10,6 +10,7 @@ public class shop : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        // 자동클릭 구매시 가림막 제거(게임 시작시)
         ACBackground.SetActive(true);
         AEBackground.SetActive(true);
         if (main.Instance.UserInfo.ACPower > 0)
@@ -22,9 +23,5 @@ public class shop : MonoBehaviour
         }
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+
 }

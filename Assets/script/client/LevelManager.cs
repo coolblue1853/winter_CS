@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
+    // 레벨 변수
     long lv2 = 100;
     long lv3 = 1000;
     long lv4 = 10000;
@@ -15,17 +16,10 @@ public class LevelManager : MonoBehaviour
     long lv10 = 10000000000;
 
 
-    bool isLv2;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
+        //레벨 업데이트
         if(main.Instance.UserInfo.Exp> lv2 && main.Instance.UserInfo.Level == 1)
         {
             StartCoroutine(main.Instance.web.SetLevel(main.Instance.UserInfo.UserName,2));

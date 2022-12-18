@@ -4,12 +4,7 @@ using UnityEngine;
 
 public class AutoClicker : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
 
-
-    }
 
     public bool isAutoClick = false;
     public bool isAutoExp = false;
@@ -21,8 +16,10 @@ public class AutoClicker : MonoBehaviour
         isAutoExp = false;
     }
     // Update is called once per frame
+    
     void Update()
     {
+        // ACP 혹은 AEP가 1 이상이라면 오토클리커 코루틴 작동.
         if (main.Instance.UserInfo.ACPower != 0 && isAutoClick==false)
         {
             isAutoClick = true;
@@ -36,6 +33,7 @@ public class AutoClicker : MonoBehaviour
     }
 
 
+    // 재귀함수로 오토클릭 구현
     IEnumerator AutoCoinClick()
     {
         if(main.Instance.UserInfo.ACSpeed != 0)

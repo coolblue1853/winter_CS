@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class main : MonoBehaviour
 {
+    //인스턴스화를 위해 생성된 Main 스크립트
     public static main Instance;
 
     public web web;
