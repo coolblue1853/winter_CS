@@ -1075,7 +1075,7 @@ GameObject:
   m_Component:
   - component: {fileID: 215319084}
   m_Layer: 5
-  m_Name: regist
+  m_Name: Regist
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1554,7 +1554,7 @@ GameObject:
   - component: {fileID: 283766363}
   - component: {fileID: 283766362}
   m_Layer: 5
-  m_Name: AEPowerTxt
+  m_Name: AEPowerText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1750,7 +1750,7 @@ GameObject:
   - component: {fileID: 335288511}
   - component: {fileID: 335288510}
   m_Layer: 5
-  m_Name: CoinTxt
+  m_Name: CoinText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3067,7 +3067,7 @@ GameObject:
   m_Component:
   - component: {fileID: 633521734}
   m_Layer: 5
-  m_Name: login
+  m_Name: Login
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3414,7 +3414,7 @@ GameObject:
   - component: {fileID: 734089021}
   - component: {fileID: 734089020}
   m_Layer: 5
-  m_Name: Text
+  m_Name: UiText_1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3800,7 +3800,7 @@ GameObject:
   - component: {fileID: 812178135}
   - component: {fileID: 812178134}
   m_Layer: 5
-  m_Name: exp
+  m_Name: Exp_Int
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4209,7 +4209,7 @@ GameObject:
   - component: {fileID: 893497999}
   - component: {fileID: 893497998}
   m_Layer: 5
-  m_Name: ExpTxt
+  m_Name: ExpText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5000,7 +5000,7 @@ GameObject:
   - component: {fileID: 957724292}
   - component: {fileID: 957724291}
   m_Layer: 5
-  m_Name: Userdata
+  m_Name: UserData
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5423,9 +5423,6 @@ MonoBehaviour:
   AESpeed: 0
   RankUser: 
   RankExp: 0
-  wrongUser: {fileID: 1410015814}
-  wrongPass: {fileID: 297717220}
-  usernameAlready: {fileID: 1990054138}
   UserNameTxt: {fileID: 1859434726}
   LevelTxt: {fileID: 1982053627}
   CoinTxt: {fileID: 335288510}
@@ -5438,6 +5435,9 @@ MonoBehaviour:
   AESpeedTxt: {fileID: 1476372484}
   RankUserTxt: {fileID: 470824171}
   RankExpTxt: {fileID: 1622743976}
+  wrongUser: {fileID: 1410015814}
+  wrongPass: {fileID: 297717220}
+  usernameAlready: {fileID: 1990054138}
 --- !u!114 &970634481
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5462,17 +5462,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a1146f6a2e3080b4ebd1614538e38db3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CPowerUpgradeCostTxt: {fileID: 924401675}
-  EPowerUpgradeCostTxt: {fileID: 24349158}
-  ACPUpgradeCostTxt: {fileID: 365821635}
-  ACSUpgradeCostTxt: {fileID: 550838928}
-  AEPUpgradeCostTxt: {fileID: 996095728}
-  AESUpgradeCostTxt: {fileID: 1929542365}
-  ShopUi: {fileID: 834410519}
-  AutoClickBuyButton: {fileID: 1519027749}
-  AutoExpBuyButton: {fileID: 263948235}
-  ACBackground: {fileID: 659272627}
-  AEBackground: {fileID: 48216871}
+  clickPowerCostText: {fileID: 0}
+  expPowerCostText: {fileID: 0}
+  autoClickPowerCostText: {fileID: 0}
+  autoClickSpeedCostText: {fileID: 0}
+  autoExpPowerCostText: {fileID: 0}
+  autoExpSpeedCostText: {fileID: 0}
+  shopUi: {fileID: 0}
+  autoClickBuyButton: {fileID: 0}
+  autoExpBuyButton: {fileID: 0}
+  autoClickBackground: {fileID: 0}
+  autoExpBackground: {fileID: 0}
   autoClicker: {fileID: 972612517}
 --- !u!1 &972612515
 GameObject:
@@ -6301,7 +6301,7 @@ GameObject:
   - component: {fileID: 1178618876}
   - component: {fileID: 1178618877}
   m_Layer: 5
-  m_Name: frame
+  m_Name: Frame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7182,7 +7182,7 @@ GameObject:
   - component: {fileID: 1376203337}
   - component: {fileID: 1376203336}
   m_Layer: 5
-  m_Name: Text (1)
+  m_Name: UiText_2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7260,7 +7260,7 @@ GameObject:
   - component: {fileID: 1382565873}
   - component: {fileID: 1382565872}
   m_Layer: 5
-  m_Name: ACSpeedTxt
+  m_Name: ACSpeedText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7572,7 +7572,7 @@ GameObject:
   - component: {fileID: 1409585879}
   - component: {fileID: 1409585878}
   m_Layer: 5
-  m_Name: EPowerTxt
+  m_Name: EPowerText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -7849,7 +7849,7 @@ GameObject:
   - component: {fileID: 1476372485}
   - component: {fileID: 1476372484}
   m_Layer: 5
-  m_Name: AESpeedTxt
+  m_Name: AESpeedText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10063,7 +10063,7 @@ GameObject:
   - component: {fileID: 1793168945}
   - component: {fileID: 1793168944}
   m_Layer: 5
-  m_Name: ACPowerTxt
+  m_Name: ACPowerText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10257,7 +10257,7 @@ GameObject:
   - component: {fileID: 1838502325}
   - component: {fileID: 1838502324}
   m_Layer: 5
-  m_Name: CPowerTxt
+  m_Name: CPowerText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10335,7 +10335,7 @@ GameObject:
   - component: {fileID: 1859434727}
   - component: {fileID: 1859434726}
   m_Layer: 5
-  m_Name: UsernameTxt
+  m_Name: UsernameText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11009,7 +11009,7 @@ GameObject:
   - component: {fileID: 1982053628}
   - component: {fileID: 1982053627}
   m_Layer: 5
-  m_Name: LevelTxt
+  m_Name: LevelText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11165,7 +11165,7 @@ GameObject:
   - component: {fileID: 1987153734}
   - component: {fileID: 1987153733}
   m_Layer: 5
-  m_Name: backgound
+  m_Name: Backgound
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -11458,7 +11458,7 @@ GameObject:
   - component: {fileID: 1995455010}
   - component: {fileID: 1995455009}
   m_Layer: 5
-  m_Name: user
+  m_Name: TopUser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -6,32 +6,32 @@ using System;
 public class PlayManager : MonoBehaviour
 {
     // 상점 구매 비용
-    long CPowerUpgradeCost;
-    long EPowerUpgradeCost;
+    long clickPowerUpCost;
+    long expPowerUpCost;
 
-    long ACPUpgradeCost;
-    long ACSUpgradeCost;
-    long AEPUpgradeCost;
-    long AESUpgradeCost;
+    long autoClickPowerCost;
+    long autoClickSpeedCost;
+    long autoExpPowerCost;
+    long autoExpSpeedCost;
 
     //상점 구매 비용 텍스트
-    public Text CPowerUpgradeCostTxt;
-    public Text EPowerUpgradeCostTxt;
+    public Text clickPowerCostText;
+    public Text expPowerCostText;
 
-    public Text ACPUpgradeCostTxt;
-    public Text ACSUpgradeCostTxt;
-    public Text AEPUpgradeCostTxt;
-    public Text AESUpgradeCostTxt;
+    public Text autoClickPowerCostText;
+    public Text autoClickSpeedCostText;
+    public Text autoExpPowerCostText;
+    public Text autoExpSpeedCostText;
 
 
     //상점관련 게임오브젝트(UI)
-    public GameObject ShopUi;
+    public GameObject shopUi;
 
-    public GameObject AutoClickBuyButton;
-    public GameObject AutoExpBuyButton;
+    public GameObject autoClickBuyButton;
+    public GameObject autoExpBuyButton;
 
-    public GameObject ACBackground;
-    public GameObject AEBackground;
+    public GameObject autoClickBackground;
+    public GameObject autoExpBackground;
 
     public AutoClicker autoClicker;
     private void Start()
@@ -61,41 +61,41 @@ public class PlayManager : MonoBehaviour
     {
         if(main.Instance.UserInfo.ACPower != 0)
         {
-            AutoClickBuyButton.SetActive(false);
+            autoClickBuyButton.SetActive(false);
         }
         else
         {
-            AutoClickBuyButton.SetActive(true);
+            autoClickBuyButton.SetActive(true);
         }
         if (main.Instance.UserInfo.AEPower != 0)
         {
-            AutoExpBuyButton.SetActive(false);
+            autoExpBuyButton.SetActive(false);
         }
         else
         {
-            AutoExpBuyButton.SetActive(true);
+            autoExpBuyButton.SetActive(true);
         }
 
-        CPowerUpgradeCost = 10 * (int)(Mathf.Pow(2, main.Instance.UserInfo.CPower));
-        CPowerUpgradeCostTxt.text = CPowerUpgradeCost.ToString();
+        clickPowerUpCost = 10 * (int)(Mathf.Pow(2, main.Instance.UserInfo.CPower));
+        clickPowerCostText.text = clickPowerUpCost.ToString();
 
 
-        EPowerUpgradeCost = 20 * (int)(Mathf.Pow(2, main.Instance.UserInfo.EPower));
-        EPowerUpgradeCostTxt.text = EPowerUpgradeCost.ToString();
+        expPowerUpCost = 20 * (int)(Mathf.Pow(2, main.Instance.UserInfo.EPower));
+        expPowerCostText.text = expPowerUpCost.ToString();
 
 
 
-        ACPUpgradeCost = 40 * (int)(Mathf.Pow(2, main.Instance.UserInfo.ACPower));
-        ACPUpgradeCostTxt.text = ACPUpgradeCost.ToString();
+        autoClickPowerCost = 40 * (int)(Mathf.Pow(2, main.Instance.UserInfo.ACPower));
+        autoClickPowerCostText.text = autoClickPowerCost.ToString();
 
-        ACSUpgradeCost = 40 * (int)(Mathf.Pow(2, main.Instance.UserInfo.ACSpeed));
-        ACSUpgradeCostTxt.text = ACSUpgradeCost.ToString();
+        autoClickSpeedCost = 40 * (int)(Mathf.Pow(2, main.Instance.UserInfo.ACSpeed));
+        autoClickSpeedCostText.text = autoClickSpeedCost.ToString();
 
-        AEPUpgradeCost = 40 * (int)(Mathf.Pow(2, main.Instance.UserInfo.AEPower));
-        AEPUpgradeCostTxt.text = AEPUpgradeCost.ToString();
+        autoExpPowerCost = 40 * (int)(Mathf.Pow(2, main.Instance.UserInfo.AEPower));
+        autoExpPowerCostText.text = autoExpPowerCost.ToString();
 
-        AESUpgradeCost = 40 * (int)(Mathf.Pow(2, main.Instance.UserInfo.AESpeed));
-        AESUpgradeCostTxt.text = AESUpgradeCost.ToString();
+        autoExpSpeedCost = 40 * (int)(Mathf.Pow(2, main.Instance.UserInfo.AESpeed));
+        autoExpSpeedCostText.text = autoExpSpeedCost.ToString();
 
     }
 
@@ -121,30 +121,30 @@ public class PlayManager : MonoBehaviour
 
     public void CloseShop()
     {
-        ShopUi.SetActive(false);
+        shopUi.SetActive(false);
 
     }
     public void OpenShop()
     {
-        ACBackground.SetActive(true);
-        AEBackground.SetActive(true);
+        autoClickBackground.SetActive(true);
+        autoExpBackground.SetActive(true);
         if (main.Instance.UserInfo.ACPower > 0)
         {
-            ACBackground.SetActive(false);
+            autoClickBackground.SetActive(false);
         }
         if (main.Instance.UserInfo.AEPower > 0)
         {
-            AEBackground.SetActive(false);
+            autoExpBackground.SetActive(false);
         }
-        ShopUi.SetActive(true);
+        shopUi.SetActive(true);
 
     }
     // 상점구매 기능들
     public void ClickUpgrade()
     {
-        if (main.Instance.UserInfo.Coins >= CPowerUpgradeCost)
+        if (main.Instance.UserInfo.Coins >= clickPowerUpCost)
         {
-            StartCoroutine(main.Instance.web.GetCoin(main.Instance.UserInfo.UserName, -CPowerUpgradeCost, 0));
+            StartCoroutine(main.Instance.web.GetCoin(main.Instance.UserInfo.UserName, -clickPowerUpCost, 0));
             StartCoroutine(main.Instance.web.SetCPower(main.Instance.UserInfo.UserName));
 
 
@@ -152,14 +152,14 @@ public class PlayManager : MonoBehaviour
     }
     public void ExpUpgrade()
     {
-        if (main.Instance.UserInfo.Coins >= EPowerUpgradeCost)
+        if (main.Instance.UserInfo.Coins >= expPowerUpCost)
         {
-            StartCoroutine(main.Instance.web.GetCoin(main.Instance.UserInfo.UserName, -EPowerUpgradeCost, 0));
+            StartCoroutine(main.Instance.web.GetCoin(main.Instance.UserInfo.UserName, -expPowerUpCost, 0));
             StartCoroutine(main.Instance.web.SetEPower(main.Instance.UserInfo.UserName));
 
         }
     }
-    public void ACBuy()
+    public void BuyAutoClick()
     {
         if (main.Instance.UserInfo.Coins >= 100)
         {
@@ -170,7 +170,7 @@ public class PlayManager : MonoBehaviour
 
         }
     } // 최초구매
-    public void AEBuy()
+    public void BuyAutoExp()
     {
         if (main.Instance.UserInfo.Coins >= 100)
         {
@@ -180,38 +180,38 @@ public class PlayManager : MonoBehaviour
 
         }
     } // 최초구매
-    public void ACPUpgrade()
+    public void UpAutoClickPower()
     {
-        if (main.Instance.UserInfo.Coins >= ACPUpgradeCost)
+        if (main.Instance.UserInfo.Coins >= autoClickPowerCost)
         {
-            StartCoroutine(main.Instance.web.GetCoin(main.Instance.UserInfo.UserName, -ACPUpgradeCost, 0));
+            StartCoroutine(main.Instance.web.GetCoin(main.Instance.UserInfo.UserName, -autoClickPowerCost, 0));
             StartCoroutine(main.Instance.web.SetACPower(main.Instance.UserInfo.UserName));
 
         }
     }
-    public void ACSUpgrade()
+    public void UpAutoClickSpeed()
     {
-        if (main.Instance.UserInfo.Coins >= ACSUpgradeCost)
+        if (main.Instance.UserInfo.Coins >= autoClickSpeedCost)
         {
-            StartCoroutine(main.Instance.web.GetCoin(main.Instance.UserInfo.UserName, -ACSUpgradeCost, 0));
+            StartCoroutine(main.Instance.web.GetCoin(main.Instance.UserInfo.UserName, -autoClickSpeedCost, 0));
             StartCoroutine(main.Instance.web.SetACSpeed(main.Instance.UserInfo.UserName));
 
         }
     }
-    public void AEPUpgrade()
+    public void UpAutoExpPower()
     {
-        if (main.Instance.UserInfo.Coins >= AEPUpgradeCost)
+        if (main.Instance.UserInfo.Coins >= autoExpPowerCost)
         {
-            StartCoroutine(main.Instance.web.GetCoin(main.Instance.UserInfo.UserName, -AEPUpgradeCost, 0));
+            StartCoroutine(main.Instance.web.GetCoin(main.Instance.UserInfo.UserName, -autoExpPowerCost, 0));
             StartCoroutine(main.Instance.web.SetAEPower(main.Instance.UserInfo.UserName));
 
         }
     }
-    public void AESUpgrade()
+    public void UpAutoExpSpeed()
     {
-        if (main.Instance.UserInfo.Coins >= AESUpgradeCost)
+        if (main.Instance.UserInfo.Coins >= autoExpSpeedCost)
         {
-            StartCoroutine(main.Instance.web.GetCoin(main.Instance.UserInfo.UserName, -AESUpgradeCost, 0));
+            StartCoroutine(main.Instance.web.GetCoin(main.Instance.UserInfo.UserName, -autoExpSpeedCost, 0));
             StartCoroutine(main.Instance.web.SetAESpeed(main.Instance.UserInfo.UserName));
 
         }
